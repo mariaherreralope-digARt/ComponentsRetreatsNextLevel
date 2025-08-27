@@ -21,6 +21,13 @@ export default {
         // dark: '#e9694e',
         // light: '#eab1a2',
 
+        // primary: '#3EB5A3', // teal
+        // secondary: '#F2D5A0', // beige
+        // accent: '#F2D5A0', // sunlit sand
+        // btt: '#D97B54', // terracota
+        // dark: '#7A9E69', // olive
+        // light: '#FF857A', // light coral
+        
         primary: '#3EB5A3', // teal
         secondary: '#F2D5A0', // beige
         accent: '#F2D5A0', // sunlit sand

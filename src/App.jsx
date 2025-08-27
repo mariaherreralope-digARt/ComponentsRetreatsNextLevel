@@ -1,7 +1,7 @@
 import './App.css'
 
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
+import Navbar from './components/navbar/Navbar'
+import Hero from './components/HeroVideo'
 import AboutMe from './components/AboutMe'
 import Cursos from './components/Cursos'
 import ImageSlider from './components/ImageSlider'
@@ -22,13 +22,13 @@ function App() {
         <div className="overflow-hidden">
           <Navbar />
           <Hero />
-          <AboutMe />
+          {/* <AboutMe />
           <Cursos />
           <ImageSlider />
           <Coaching />
-          <Testimonials />
+          <Testimonials /> */}
           <Newsletter />
-          <Footer />
+          {/* <Footer /> */}
           <CookieConsentBanner />
           <GlobalModal />
         </div>

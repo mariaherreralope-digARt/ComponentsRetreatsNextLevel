@@ -1,0 +1,97 @@
+import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import Logo from "./Logo";
+import NavMenuButton from "./NavMenuButton";
+import MobileMenu from "./MobileMenu";
+import ContactButton from "./ContactButton";
+
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("#inicio");
+  const [scrolled, setScrolled] = useState(false);
+  const [circlePos, setCirclePos] = useState({ top: 0, left: 0 });
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // update circle position when menu opens
+  useEffect(() => {
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setCirclePos({
+        top: rect.top + rect.height / 2,
+        left: rect.left + rect.width / 2,
+      });
+    }
+  }, [isMenuOpen]);
+
+  const navLinks = [
+    { href: "#quiensoy", label: "Quien Soy" },
+    { href: "#cursos", label: "Cursos" },
+    { href: "#retiros", label: "Retiros" },
+    { href: "#coaching", label: "Coaching" },
+    { href: "#testimonios", label: "Testimonios" },
+  ];
+
+  return (
+    <motion.nav
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        scrolled ? "bg-white shadow-md" : "bg-transparent"
+      }`}
+    >
+
+      <div className="w-full mx-auto flex items-center justify-between px-4 sm:px-8 lg:px-10 h-20 relative">
+        {/* Menu Button */}
+        <div ref={buttonRef} className="z-30">
+          <NavMenuButton
+            isMenuOpen={isMenuOpen}
+            setIsMenuOpen={setIsMenuOpen}
+          />
+        </div>
+
+        {/* Centered Logo (absolute centering) */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+          <Logo setActiveLink={setActiveLink} />
+        </div>
+
+        {/* Contact Button */}
+        <ContactButton />
+
+        {/* Expanding Circle Background */}
+        <motion.div
+          initial={false}
+          animate={{
+            scale: isMenuOpen ? 50 : 0,
+          }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          style={{
+            top: circlePos.top,
+            left: circlePos.left,
+            transform: "translate(-50%, -50%)",
+          }}
+          className="absolute w-12 h-12 rounded-full bg-btt z-0"
+        />
+      </div>
+
+      {/* Mobile Menu */}
+      <MobileMenu
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        activeLink={activeLink}
+        setActiveLink={setActiveLink}
+        navLinks={navLinks}
+      />
+    </motion.nav>
+  );
+};
+
+export default Navbar;
