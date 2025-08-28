@@ -8,10 +8,10 @@ const NavLinks = ({ navLinks, activeLink, setActiveLink, onClick }) => (
           setActiveLink(link.href);
           if (onClick) onClick();
         }}
-        className={`block text-sm font-medium font-body py-2 ${
+        className={`block text-sm font-medium  font-body py-2 ${
           activeLink === link.href
-            ? "text-slate-700 hover:primary"
-            : "text-btt hover:primary"
+            ? "text-btt hover:primary"
+            : "text-primary hover:primary"
         }`}
       >
         {link.label}

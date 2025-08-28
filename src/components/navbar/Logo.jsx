@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import logo from "../../assets/logo.png";
+import logo2 from "../../assets/logo2.png";
 
-const Logo = ({ setActiveLink }) => (
+const Logo = ({ setActiveLink, isMenuOpen }) => (
   <div className="z-30 flex justify-center">
     <a
       href="#inicio"
@@ -12,7 +13,7 @@ const Logo = ({ setActiveLink }) => (
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 2.8, delay: 0.5 }}
-        src={logo}
+        src={isMenuOpen ? logo2 : logo}
         alt="Happy & Healthy"
         className="h-40 relative z-10"
       />
