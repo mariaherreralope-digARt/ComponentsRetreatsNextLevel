@@ -30,11 +30,14 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   const navLinks = [
-    { href: "#quiensoy", label: "Quien Soy" },
-    { href: "#cursos", label: "Cursos" },
-    { href: "#retiros", label: "Retiros" },
-    { href: "#coaching", label: "Coaching" },
-    { href: "#testimonios", label: "Testimonios" },
+    { href: "#quiensoy", label: "Renew You" },
+    { href: "#quiensoy", label: "Soul Connection & Healing" },
+    { href: "#quiensoy", label: "Pamper Deluxe" },
+
+    { href: "#cursos", label: "Destinations" },
+    { href: "#retiros", label: "Practitioners" },
+    { href: "#coaching", label: "About Us" },
+    { href: "#testimonios", label: "Testimonials" },
   ];
 
   return (
